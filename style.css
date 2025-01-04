@@ -1,0 +1,713 @@
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    background-color: #f4f4f8;
+    color: #333;
+    line-height: 1.7;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.site-wrapper {
+    overflow: hidden;
+}
+
+/* Стилизация заголовка */
+.site-header {
+    background: #fff;
+    padding: 30px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.logo {
+    font-size: 2.5em;
+    color: #e91e63;
+    margin: 0;
+}
+
+.heart-icon {
+    animation: heartbeat 1.5s infinite;
+    display: inline-block;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 30px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #e91e63;
+}
+
+/* Стилизация основного контента */
+.site-main .section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-size: 3em;
+    color: #e91e63;
+    text-align: center;
+    margin-bottom: 60px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Стилизация раздела "История" */
+.history-section {
+    background: url('images/history-bg.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+.history-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.history-section .section-title {
+    color: #fff;
+    font-family: 'Cursive', cursive;
+    font-size: 3.5em;
+    margin-bottom: 70px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.history-story {
+    font-size: 1.2em;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ... ваши предыдущие стили ... */
+
+.history-timeline {
+    position: relative;
+    padding-top: 50px;
+    /* Добавим псевдоэлемент для вертикальной линии */
+}
+
+.history-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px; /* Толщина линии */
+    background: #ddd; /* Цвет линии */
+    transform: translateX(-50%);
+    z-index: 10; /* Убедимся, что линия под кружками */
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 80px; /* Задаем вертикальный отступ между элементами */
+    overflow: hidden; /*  Чтобы "обтекание" работало корректно */
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    float: left; /* Перемещаем влево для нечетных */
+    margin-left: 10%; /* Отступ слева */
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    float: right; /* Перемещаем вправо для четных */
+    margin-right: 10%; /* Отступ справа */
+}
+
+.timeline-circle {
+    position: absolute;
+    top: 50%; /* Центрируем по вертикали относительно timeline-item */
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%); /* Центрируем и по вертикали */
+    width: 20px;
+    height: 20px;
+    background: #e91e63;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 11;
+}
+
+.timeline-content {
+    position: relative; /*  Меняем на relative, чтобы работало "обтекание" */
+    width: 40%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* top: -10px; */ /* Больше не нужно */
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 10px;
+    border-left: 15px solid rgba(255, 255, 255, 0.9);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 10px;
+    border-right: 15px solid rgba(255, 255, 255, 0.9);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.timeline-content .date {
+    display: block;
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* Медиазапросы, если необходимо скорректировать отображение на маленьких экранах */
+@media (max-width: 768px) {
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        float: none; /* Убираем обтекание на маленьких экранах */
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%; /* Занимает большую часть ширины */
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content::before {
+        border: none; /* Убираем "хвостики" */
+    }
+
+    .timeline-item:nth-child(even) .timeline-content::before {
+        border: none;
+    }
+
+    .timeline-circle {
+        left: 10%; /* Сдвигаем кружок, если контент занимает всю ширину */
+    }
+}
+
+/* Стилизация раздела "Галерея" */
+.gallery-section {
+    background-color: #fff;
+    padding: 20px 0; /* Добавим немного отступов сверху и снизу */
+}
+
+.gallery-slider {
+    position: relative;
+    max-width: 90%; /* Немного уменьшим максимальную ширину для отступов по бокам */
+    margin: 0 auto;
+    overflow: hidden; /* Важно, чтобы скрыть выходящие за рамки слайды */
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Стилизация раздела "Галерея" */
+.gallery-section {
+    background-color: #fff;
+    padding: 20px 0;
+}
+
+.gallery-slider {
+    position: relative;
+    max-width: 90%;
+    margin: 0 auto;
+    overflow: hidden; /* Важно! */
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Сделаем анимацию чуть быстрее и проще */
+}
+
+.slide {
+    flex: 0 0 auto; /* Не сжиматься, не растягиваться, автоматическая ширина */
+    width: 50%; /* Занимает 80% ширины родителя (можно настроить) */
+    margin-right: 20px; /* Отступы между слайдами */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Убираем отступ у последнего слайда */
+.slide:last-child {
+    margin-right: 0;
+}
+
+.slide img,
+.slide video {
+    width: 100%;
+    height: auto; /* Автоматическая высота, сохраняющая пропорции */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Более легкая тень */
+    display: block;
+}
+
+.caption {
+    margin-top: 10px;
+    font-style: italic;
+    color: #777;
+    font-size: 0.9em;
+}
+
+.slider-controls button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff; /* Светлый фон */
+    color: #333; /* Темный цвет текста */
+    border: 1px solid #ccc; /* Тонкая серая граница */
+    border-radius: 50%; /* Круглые кнопки */
+    width: 40px; /* Размер кнопок */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.slider-controls button:hover {
+    opacity: 1;
+    background-color: #f0f0f0; /* Небольшое изменение фона при наведении */
+}
+
+.prev-slide {
+    left: 10px;
+}
+
+.next-slide {
+    right: 10px;
+}
+
+.slider-controls button i {
+    /* Убираем стандартное подчеркивание у иконок */
+    text-decoration: none;
+}
+
+/* Адаптивность (уменьшаем ширину слайда на маленьких экранах) */
+@media (max-width: 768px) {
+    .slide {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide {
+        width: 100%;
+    }
+    .slider-controls button {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+    }
+}
+/* Стилизация раздела "Письма" */
+.letters-section {
+    background-color: #f9f9f9;
+}
+
+.letters-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.letter-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+
+.letter-card h3 {
+    color: #e91e63;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.letter-content p {
+    line-height: 1;
+}
+
+.letter-content textarea {
+    width: 100%;
+    min-height: 150px;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Стилизация раздела "Мечты" */
+.dreams-section {
+    background: url('images/dreams-bg.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.dreams-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.dreams-section .section-title {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5); /* Example with a semi-transparent black background */
+    padding: 5px 10px; /* Add some padding for better appearance */
+    border-radius: 5px; /* Optional: round the corners */
+}
+
+.dreams-list {
+    max-width: 800px;
+    margin: 40px auto 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.dream-item {
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
+    padding: 20px 30px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.dream-item i {
+    margin-right: 10px;
+    color: #e91e63;
+}
+
+/* Стилизация раздела "Секрет" */
+.secret-section {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.secret-section .section-title {
+    color: #fff;
+}
+
+.password-input {
+    margin-bottom: 30px;
+}
+
+.password-input label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.password-input input[type="password"] {
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    width: 300px;
+    background: #444;
+    color: #fff;
+}
+
+.password-input button {
+    background: #e91e63;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.password-input button:hover {
+    background-color: #ad1457;
+}
+
+#secret-content {
+    background: #444;
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none !important; /* Ensure it's hidden */
+}
+
+/* Стилизация "Избранное" */
+.favorites-section {
+    background-color: #fff;
+}
+
+.favorites-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.favorite-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    text-align: center;
+}
+
+.favorite-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Стилизация "Мост любви" */
+.timezone-section {
+    background-color: #f0f0f0;
+}
+
+.timezone-clocks {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.clock-city {
+    text-align: center;
+}
+
+.clock {
+    font-size: 2.5em;
+    color: #e91e63;
+    font-weight: bold;
+}
+
+/* Стилизация "Планы" */
+.plans-section {
+    background-color: #fff;
+}
+
+.future-plans {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.future-plans ul {
+    list-style: none;
+    padding: 0;
+}
+
+.future-plans li {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.future-plans li i {
+    margin-right: 15px;
+    color: #e91e63;
+    font-size: 1.3em;
+}
+
+/* Стилизация подвала */
+.site-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo {
+        margin-bottom: 20px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+    }
+
+    .main-nav li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .letters-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .letter-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .timezone-clocks {
+        flex-direction: column;
+    }
+
+    .clock-city {
+        margin-bottom: 30px;
+    }
+}
+
+/* Стилизация раздела "Моменты, застывшие во времени" (календарь) */
+/* Стилизация раздела "Важные даты" */
+.calendar-section {
+    padding: 50px 0;
+    background-color: #f9f9f9; /* Можно изменить цвет фона */
+}
+
+.important-dates-list {
+    list-style: none; /* Убираем стандартные маркеры списка */
+    padding: 0;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.important-dates-list li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Располагаем дату и описание по краям */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.important-dates-list li:hover {
+    transform: scale(1.02);
+}
+
+.date-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffe0e6; /* Нежный розовый цвет для иконки */
+    color: #e91e63;
+    font-size: 1em;
+    margin-right: 15px;
+}
+
+.date-icon i {
+    /* Дополнительные стили для иконки, если используете Font Awesome или другой иконочный шрифт */
+}
+
+.date-text {
+    flex-grow: 1; /* Занимает все доступное пространство */
+}
+
+.date-text span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .important-dates-list li {
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+    .date-icon {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9em;
+        margin-right: 10px;
+    }
+}
