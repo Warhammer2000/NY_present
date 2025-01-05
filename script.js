@@ -1,97 +1,131 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Галерея - Продвинутый слайдер
-    const sliderWrapper = document.querySelector('.slider-wrapper');
-    const slides = document.querySelectorAll('.slide');
-    const prevButton = document.querySelector('.prev-slide');
-    const nextButton = document.querySelector('.next-slide');
-    let currentIndex = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Галерея - Продвинутый слайдер ---
+  const sliderWrapper = document.querySelector(".slider-wrapper");
+  const slides = document.querySelectorAll(".slide");
+  const prevButton = document.querySelector(".prev-slide");
+  const nextButton = document.querySelector(".next-slide");
+  let currentIndex = 0;
 
-    if (sliderWrapper && slides.length > 0) {
-        const slideWidth = slides[0].offsetWidth; // Получаем реальную ширину слайда
-        const gap = parseFloat(getComputedStyle(slides[0]).marginRight); // Получаем размер отступа
+  if (sliderWrapper && slides.length > 0) {
+    let slideWidth, gap;
 
-        function updateSlider() {
-            sliderWrapper.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
-        }
+    const updateSliderDimensions = () => {
+      slideWidth = slides[0].getBoundingClientRect().width;
+      gap = parseFloat(getComputedStyle(slides[0]).marginRight);
+      updateSlider();
+    };
 
-        prevButton.addEventListener('click', () => {
-            currentIndex = Math.max(0, currentIndex - 1);
-            updateSlider();
-        });
-
-        nextButton.addEventListener('click', () => {
-            currentIndex = Math.min(slides.length - 1, currentIndex + 1);
-            updateSlider();
-        });
-
-        // Начальное позиционирование слайдера
-        updateSlider();
-    }
-    // Секретный раздел - Показ контента
-    const passwordInput = document.getElementById('secret-code');
-    const revealButton = document.getElementById('reveal-secret');
-    const secretContent = document.getElementById('secret-content');
-
-    if (revealButton) {
-        revealButton.addEventListener('click', () => {
-            if (passwordInput.value === "123") { // Замените на свой пароль
-                secretContent.classList.remove('hidden');
-                console.log("Remove hidden"); // Added console log for verification
-            } else {
-                alert('Код неверный!');
-            }
-        });
+    function updateSlider() {
+      sliderWrapper.style.transform = `translateX(-${
+        currentIndex * (slideWidth + gap)
+      }px)`;
     }
 
-    // Календарь воспоминаний - Простая реализация (можно заменить на библиотеку)
-    const calendarSection = document.getElementById('calendar');
-    const importantDatesList = document.querySelector('.important-dates-list');
-
-    if (calendarSection && importantDatesList) {
-        const importantDates = [
-            { month: 1, day: 1, description: 'Новый год' },
-            { month: 3, day: 8, description: 'Международный женский день' },
-            { month: 4, day: 10, description: 'Важная дата' },
-            { month: 6, day: 5, description: 'Еще одно событие' },
-            { month: 8, day: 19, description: 'Памятный день' }
-        ];
-
-        importantDates.forEach(date => {
-            const listItem = document.createElement('li');
-            const dateIcon = document.createElement('div');
-            dateIcon.classList.add('date-icon');
-            dateIcon.innerHTML = '<i class="fas fa-heart"></i>'; // Пример иконки, можно заменить
-
-            const dateText = document.createElement('div');
-            dateText.classList.add('date-text');
-            dateText.innerHTML = `<span>${date.day}.${date.month.toString().padStart(2, '0')}</span> - ${date.description}`;
-
-            listItem.appendChild(dateIcon);
-            listItem.appendChild(dateText);
-            importantDatesList.appendChild(listItem);
-        });
-    }
-
-    // Часовой пояс - Обновление времени
-    function updateClock(elementId, timezone) {
-        const element = document.getElementById(elementId);
-        if (element) {
-            const now = new Date();
-            const options = { timeZone: timezone, hour: 'numeric', minute: 'numeric', second: 'numeric' };
-            element.textContent = new Intl.DateTimeFormat('ru-RU', options).format(now);
-        }
-    }
-    setInterval(() => updateClock('tashkent-clock', 'Asia/Tashkent'), 1000);
-    setInterval(() => updateClock('korea-clock', 'Asia/Seoul'), 1000);
-
-    // Плавная прокрутка к якорям
-    document.querySelectorAll('.main-nav a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
+    prevButton.addEventListener("click", () => {
+      currentIndex = Math.max(0, currentIndex - 1);
+      updateSlider();
     });
+
+    nextButton.addEventListener("click", () => {
+      currentIndex = Math.min(slides.length - 1, currentIndex + 1);
+      updateSlider();
+    });
+
+    updateSliderDimensions();
+    window.addEventListener("resize", updateSliderDimensions);
+  }
+
+  // --- Секретный раздел - Показ контента ---
+  const revealSecretButton = document.getElementById("reveal-secret");
+  const secretContent = document.getElementById("secret-content");
+  const passwordInput = document.getElementById("secret-code");
+  const videoWrapper = document.querySelector(".video-wrapper");
+  const videoSlides = document.querySelectorAll(".video-slide");
+  const prevVideoButton = document.querySelector(".prev-video");
+  const nextVideoButton = document.querySelector(".next-video");
+  let currentVideoIndex = 0;
+
+  function showCurrentVideo() {
+    videoWrapper.style.transform = `translateX(-${currentVideoIndex * 100}%)`;
+  }
+
+  prevVideoButton?.addEventListener("click", () => {
+    currentVideoIndex = Math.max(0, currentVideoIndex - 1);
+    showCurrentVideo();
+  });
+
+  nextVideoButton?.addEventListener("click", () => {
+    currentVideoIndex = Math.min(videoSlides.length - 1, currentVideoIndex + 1);
+    showCurrentVideo();
+  });
+
+  revealSecretButton?.addEventListener("click", function () {
+    const password = passwordInput.value;
+    // **ВАЖНО: В РЕАЛЬНОМ ПРИЛОЖЕНИИ ЗДЕСЬ ДОЛЖНА БЫТЬ ПРОВЕРКА ПАРОЛЯ НА СЕРВЕРЕ**
+    if (password === "123") {
+      document.querySelector(".password-input").style.display = "none";
+      secretContent.classList.remove("hidden");
+      showCurrentVideo();
+    } else {
+      alert("Неверный код доступа!");
+    }
+  });
+
+  // --- Календарь воспоминаний ---
+  const importantDatesList = document.querySelector(".important-dates-list");
+  if (importantDatesList) {
+    const importantDates = [
+      { month: 1, day: 1, description: "Новый год" },
+      { month: 3, day: 8, description: "Международный женский день" },
+      { month: 4, day: 10, description: "Важная дата" },
+      { month: 6, day: 5, description: "Еще одно событие" },
+      { month: 8, day: 19, description: "Памятный день" },
+    ];
+
+    importantDates.forEach((date) => {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `
+                <div class="date-icon"><i class="fas fa-heart"></i></div>
+                <div class="date-text"><span>${date.day}.${date.month
+        .toString()
+        .padStart(2, "0")}</span> - ${date.description}</div>
+            `;
+      importantDatesList.appendChild(listItem);
+    });
+  }
+
+  // --- Часовой пояс - Обновление времени ---
+  const updateClock = (elementId, timezone) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      const now = new Date();
+      const options = {
+        timeZone: timezone,
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      };
+      element.textContent = new Intl.DateTimeFormat("ru-RU", options).format(
+        now
+      );
+    }
+  };
+  setInterval(() => updateClock("tashkent-clock", "Asia/Tashkent"), 1000);
+  setInterval(() => updateClock("korea-clock", "Asia/Seoul"), 1000);
+
+  // --- Плавная прокрутка к якорям ---
+  document.querySelectorAll(".main-nav a").forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  });
+
+  if (Plyr) {
+    console.log("Player Start");
+    Plyr.setup(".plyr");
+  }
 });

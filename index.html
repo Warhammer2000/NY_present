@@ -7,25 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
 </head>
 <body>
     <div class="site-wrapper">
         <header class="site-header">
             <div class="header-inner">
                 <h1 class="logo">Наша <span class="heart-icon"><i class="fas fa-heart"></i></span> История</h1>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="#history">История</a></li>
-                        <li><a href="#gallery">Воспоминания</a></li>
-                        <li><a href="#letters">Письма</a></li>
-                        <li><a href="#dreams">Мечты</a></li>
-                        <li><a href="#secret">Секрет</a></li>
-                        <li><a href="#calendar">Календарь</a></li>
-                        <li><a href="#favorites">Любимое</a></li>
-                        <li><a href="#timezone">Мост</a></li>
-                        <li><a href="#plans">Планы</a></li>
-                    </ul>
-                </nav>
             </div>
         </header>
 
@@ -196,7 +184,25 @@
                     </div>
                     <div id="secret-content" class="hidden">
                         <h3>Секретное послание!</h3>
-                        <p>Тут будет нечто особенное, например, видео-признание или очень личные моменты.</p>
+                        <div class="video-slider">
+                            <div class="slider-controls">
+                                <button class="prev-video"><i class="fas fa-arrow-left"></i></button>
+                                <button class="next-video"><i class="fas fa-arrow-right"></i></button>
+                            </div>
+                            <div class="video-wrapper">
+                                <div class="video-slide">
+                                    <div class="plyr">
+                                        <video src="videos/video_2025-01-05_00-09-40.mp4" controls></video>
+                                    </div>
+                                </div>
+                                <div class="video-slide">
+                                    <div class="plyr">
+                                        <video src="videos/Africa.mp4" controls></video>
+                                    </div>
+                                </div>
+                                <!-- Добавьте больше видео слайдов по мере необходимости -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -263,5 +269,6 @@
         </footer>
     </div>
     <script src="script.js"></script>
+    <script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
 </body>
 </html>

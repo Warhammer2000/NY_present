@@ -25,10 +25,11 @@ body {
 .header-inner {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;  Удалено */
+    /* justify-content: space-between; Удалено */
     align-items: center;
     padding: 0 30px;
+    text-align: center; /* Добавлено */
 }
 
 .logo {
@@ -767,4 +768,59 @@ body {
     .timeline-circle {
         left: 10px;
     }
+}
+
+
+/* Стилизация слайдера с видео */
+.video-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.video-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.video-slide {
+    min-width: 50%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.video-slide video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.video-slider .slider-controls button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.video-slider .slider-controls button:hover {
+    opacity: 1;
+}
+
+.video-slider .prev-video {
+    left: 10px;
+}
+
+.video-slider .next-video {
+    right: 10px;
 }
