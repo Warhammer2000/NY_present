@@ -101,12 +101,14 @@ body {
 
 /* Стилизация раздела "История" */
 .history-section {
-    background: url('images/history-bg.jpg') center/cover no-repeat;
+    background: url('images/love-bg.jpg') center top/cover no-repeat; /* Фон прижат к верху */
     color: #fff;
     text-align: center;
     position: relative;
+    min-height: 100vh; /* Минимальная высота во весь экран */
     padding-top: 150px;
     padding-bottom: 100px;
+    overflow: hidden; /* Предотвращаем выход теней за границы */
 }
 
 .history-section::before {
@@ -126,12 +128,14 @@ body {
     font-size: 3.5em;
     margin-bottom: 70px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative; /* Убедитесь, что заголовок поверх overlay */
+    z-index: 2;
 }
 
 .history-story {
     font-size: 1.2em;
     margin-bottom: 60px;
-    position: relative;
+    position: relative; /* Убедитесь, что текст поверх overlay */
     z-index: 2;
 }
 
@@ -333,7 +337,7 @@ body {
 
 .slider-controls button:hover {
     opacity: 1;
-    background-color: #f0f0f0; /* Небольшое изменение фона при наведении */
+    background-color: #f0f0f0; 
 }
 
 .prev-slide {
@@ -345,11 +349,9 @@ body {
 }
 
 .slider-controls button i {
-    /* Убираем стандартное подчеркивание у иконок */
     text-decoration: none;
 }
 
-/* Адаптивность (уменьшаем ширину слайда на маленьких экранах) */
 @media (max-width: 768px) {
     .slide {
         width: 90%;
@@ -366,7 +368,7 @@ body {
         font-size: 1em;
     }
 }
-/* Стилизация раздела "Письма" */
+
 .letters-section {
     background-color: #f9f9f9;
 }
@@ -408,9 +410,8 @@ body {
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Стилизация раздела "Мечты" */
 .dreams-section {
-    background: url('images/dreams-bg.jpg') center/cover no-repeat;
+    background: url('images/photo-soap.jpg') center/cover no-repeat;
     color: #fff;
     text-align: center;
     position: relative;
@@ -423,15 +424,15 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0);
     z-index: 1;
 }
 
 .dreams-section .section-title {
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.5); /* Example with a semi-transparent black background */
-    padding: 5px 10px; /* Add some padding for better appearance */
-    border-radius: 5px; /* Optional: round the corners */
+    background-color: rgba(0, 0, 0, 0);
+    padding: 5px 10px; 
+    border-radius: 5px; 
 }
 
 .dreams-list {
@@ -460,9 +461,8 @@ body {
     color: #e91e63;
 }
 
-/* Стилизация раздела "Секрет" */
 .secret-section {
-    background-color: #333;
+    background-color: #1a253b;
     color: #fff;
     text-align: center;
 }
@@ -709,5 +709,62 @@ body {
         height: 25px;
         font-size: 0.9em;
         margin-right: 10px;
+    }
+}
+
+.timeline-item-future .timeline-circle-future {
+    animation: pulse 1.5s infinite;
+    background: #FF4081; /* Более яркий цвет */
+}
+
+.timeline-item-future .timeline-content {
+    font-weight: bold;
+}
+
+.future-hint {
+    display: inline-block;
+    animation: twinkle 1s linear infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* Адаптивный дизайн для таймлайна */
+@media (max-width: 768px) {
+    .history-timeline::before {
+        left: 10px;
+    }
+
+    .timeline-item .timeline-content {
+        width: calc(100% - 40px);
+        margin-left: 30px !important;
+        margin-right: 0 !important;
+        float: none !important;
+        text-align: left;
+    }
+
+    .timeline-circle {
+        left: 10px;
     }
 }
