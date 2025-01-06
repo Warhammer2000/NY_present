@@ -129,57 +129,62 @@ document.addEventListener("DOMContentLoaded", () => {
     Plyr.setup(".plyr");
   }
 
-  const audioPlayer = document.querySelector('.custom-audio-player');
-  const audio = audioPlayer.querySelector('audio');
-  const playPauseButton = audioPlayer.querySelector('.play-pause-button');
-  const playIcon = 'fas fa-play';
-  const pauseIcon = 'fas fa-pause';
-  const progressBar = audioPlayer.querySelector('.progress-bar');
-  const progress = audioPlayer.querySelector('.progress');
-  const currentTimeDisplay = audioPlayer.querySelector('.current-time');
-  const durationDisplay = audioPlayer.querySelector('.duration');
-  const volumeSlider = audioPlayer.querySelector('.volume-slider');
+  const audioPlayer = document.querySelector(".custom-audio-player");
+  const audio = audioPlayer.querySelector("audio");
+  const playPauseButton = audioPlayer.querySelector(".play-pause-button");
+  const playIcon = "fa-play"; // Только специфическая часть иконки
+  const pauseIcon = "fa-pause"; // Только специфическая часть иконки
+  const progressBar = audioPlayer.querySelector(".progress-bar");
+  const progress = audioPlayer.querySelector(".progress");
+  const currentTimeDisplay = audioPlayer.querySelector(".current-time");
+  const durationDisplay = audioPlayer.querySelector(".duration");
+  const volumeSlider = audioPlayer.querySelector(".volume-slider");
 
   // Загрузка метаданных аудио
-  audio.addEventListener('loadedmetadata', () => {
-      durationDisplay.textContent = formatTime(audio.duration);
+  audio.addEventListener("loadedmetadata", () => {
+    durationDisplay.textContent = formatTime(audio.duration);
   });
 
   // Play/Pause
-  playPauseButton.addEventListener('click', () => {
-      if (audio.paused) {
-          audio.play();
-          playPauseButton.querySelector('i').classList.replace(playIcon, pauseIcon);
-      } else {
-          audio.pause();
-          playPauseButton.querySelector('i').classList.replace(pauseIcon, playIcon);
-      }
+  playPauseButton.addEventListener("click", () => {
+    const icon = playPauseButton.querySelector("i");
+    if (audio.paused) {
+      audio.play();
+      icon.classList.remove(playIcon);
+      icon.classList.add(pauseIcon);
+    } else {
+      audio.pause();
+      icon.classList.remove(pauseIcon);
+      icon.classList.add(playIcon);
+    }
   });
 
   // Обновление прогресса
-  audio.addEventListener('timeupdate', () => {
-      const progressPercent = (audio.currentTime / audio.duration) * 100;
-      progress.style.width = `${progressPercent}%`;
-      currentTimeDisplay.textContent = formatTime(audio.currentTime);
+  audio.addEventListener("timeupdate", () => {
+    const progressPercent = (audio.currentTime / audio.duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+    currentTimeDisplay.textContent = formatTime(audio.currentTime);
   });
 
   // Перемотка при клике на progress bar
-  progressBar.addEventListener('click', (e) => {
-      const progressBarWidth = progressBar.offsetWidth;
-      const clickPosition = e.offsetX;
-      const seekTime = (clickPosition / progressBarWidth) * audio.duration;
-      audio.currentTime = seekTime;
+  progressBar.addEventListener("click", (e) => {
+    const progressBarWidth = progressBar.offsetWidth;
+    const clickPosition = e.offsetX;
+    const seekTime = (clickPosition / progressBarWidth) * audio.duration;
+    audio.currentTime = seekTime;
   });
 
   // Регулировка громкости
-  volumeSlider.addEventListener('input', () => {
-      audio.volume = volumeSlider.value;
+  volumeSlider.addEventListener("input", () => {
+    audio.volume = volumeSlider.value;
   });
 
   // Функция для форматирования времени
   function formatTime(time) {
-      const minutes = Math.floor(time / 60);
-      const seconds = Math.floor(time % 60).toString().padStart(2, '0');
-      return `${minutes}:${seconds}`;
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${minutes}:${seconds}`;
   }
 });
