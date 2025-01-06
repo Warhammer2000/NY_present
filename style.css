@@ -824,3 +824,227 @@ body {
 .video-slider .next-video {
     right: 10px;
 }
+
+
+
+.favorites-media-section {
+    background-color: #f8f9fa;
+    padding: 60px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    color: #343a40;
+    font-weight: bold;
+}
+
+/* Стили для категорий */
+.media-category {
+    margin-bottom: 70px;
+}
+
+.media-category h3 {
+    font-size: 2em;
+    color: #495057;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #dee2e6;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Сетка для медиа-элементов */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 35px;
+}
+
+/* Стили для карточек медиа */
+.media-item {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.media-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.media-item img {
+    width: 100%;
+    height: 300px; /* Увеличенная высота для эффекта галереи */
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.media-item-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.media-item-content h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.2em;
+    color: #212529;
+    font-weight: 600;
+}
+
+.media-item-content p {
+    color: #6c757d;
+    font-size: 0.95em;
+    margin-bottom: 20px;
+}
+
+.media-item-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.media-item-actions a,
+.media-item-actions button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 1em;
+}
+
+.media-item-actions a:hover,
+.media-item-actions button:hover {
+    background-color: #0056b3;
+}
+
+/* Специфические стили для музыки */
+.media-item.music .media-item-content p {
+    margin-bottom: 30px; /* Больше пространства для кнопки "Слушать" */
+}
+
+
+    .custom-audio-player {
+        background-color: #181818; /* Темный фон, как у Spotify */
+        color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        gap: 15px;
+        font-family: sans-serif;
+    }
+
+    .custom-audio-player .cover img {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+
+.custom-audio-player .info {
+    flex-grow: 1;
+}
+
+.custom-audio-player .info h4 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.custom-audio-player .info p {
+    margin: 0;
+    font-size: 0.8em;
+    color: #b3b3b3;
+}
+
+.custom-audio-player .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+.custom-audio-player .play-pause-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.custom-audio-player .play-pause-button i {
+    /* Стили для иконки play/pause (потребуется Font Awesome или аналоги) */
+}
+
+.custom-audio-player .progress-bar {
+    background-color: #404040;
+    height: 5px;
+    border-radius: 5px;
+    flex-grow: 1;
+    cursor: pointer;
+    position: relative;
+}
+
+.custom-audio-player .progress-bar .progress {
+    background-color: #1db954; /* Зеленый цвет Spotify */
+    height: 100%;
+    width: 0;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.custom-audio-player .time {
+    font-size: 0.75em;
+    color: #b3b3b3;
+    width: 60px;
+    text-align: center;
+}
+
+.custom-audio-player .volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.custom-audio-player .volume-control i {
+    color: #fff;
+}
+
+.custom-audio-player .volume-control input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: #404040;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 80px;
+}
+
+.custom-audio-player .volume-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: grab;
+}
+
+/* Добавьте стили для иконок (например, Font Awesome) */
+.fa-play::before { content: "\f001"; }
+.fa-pause::before { content: "\f001"; }
+.fa-volume-up::before { content: "\f028"; }
