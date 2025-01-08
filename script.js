@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize EmailJS FIRST
+  emailjs.init('H27wIf2owHo98p_li');
   // --- Галерея - Продвинутый слайдер ---
   const sliderWrapper = document.querySelector(".slider-wrapper");
   const slides = document.querySelectorAll(".slide");
@@ -187,4 +189,37 @@ document.addEventListener("DOMContentLoaded", () => {
       .padStart(2, "0");
     return `${minutes}:${seconds}`;
   }
+
+
+  console.log('DOMContentLoaded event fired.');
+ 
+  console.log('EmailJS initialized (from script.js)');
+
+  // --- Отправка email (EmailJS) ---
+  const sendButton = document.getElementById('sendButton');
+  if (sendButton) {
+    sendButton.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const myLetterContent = document.getElementById('myLetterContent').textContent;
+      const herAnswer = document.getElementById('herAnswer').value;
+
+      const templateParams = {
+        my_letter: myLetterContent,
+        reply_text: herAnswer
+      };
+
+      // Отправка email через EmailJS
+      emailjs.send('service_uld33j6', 'template_b5r6osc', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Сообщение успешно отправлено!');
+        }, function(error) {
+          console.error('FAILED...', error);
+          alert('Ошибка отправки сообщения.');
+        });
+    });
+  }
+
+  
 });
