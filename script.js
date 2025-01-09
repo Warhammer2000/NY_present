@@ -195,7 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
  
   console.log('EmailJS initialized (from script.js)');
 
-  // --- Отправка email (EmailJS) ---
   const sendButton = document.getElementById('sendButton');
   if (sendButton) {
     sendButton.addEventListener('click', function(e) {
@@ -221,5 +220,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
+  const interactiveItems = document.querySelectorAll('.pixel-art-item.has-surprise');
+
+  interactiveItems.forEach(item => {
+      const button = item.querySelector('.surprise-button');
+      const preview = item.querySelector('.surprise-preview');
+      const video = item.querySelector('video');
+      const previewTriggerLink = item.querySelector('.preview-trigger');
+
+      button.addEventListener('click', function() {
+          button.style.display = 'none'; 
+          preview.style.display = 'block'; 
+      });
+
+      previewTriggerLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Предотвращаем переход по ссылке
+        preview.style.display = 'none';
+        video.style.display = 'block';
+        video.play();
+    });
+  });
+
 });
