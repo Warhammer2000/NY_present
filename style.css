@@ -705,55 +705,128 @@ body {
 /* Стилизация слайдера с видео */
 .video-slider {
   position: relative;
-  max-width: 95%; /* Take up more width on smaller screens */
-  margin: 20px auto;
+  max-width: 85%; /* Еще больше акцент на контент */
+  margin: 40px auto; /* Больше пространства вокруг */
   overflow: hidden;
+  border-radius: 15px; /* Более выраженное скругление */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Более заметная, но мягкая тень */
+  background-color: #f9f9f9; /* Светлый фон для контраста */
 }
 
 .video-wrapper {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1); /* Очень плавная и интересная анимация */
 }
 
 .video-slide {
-  min-width: 90%; /* Display one video at a time primarily */
+  flex: 0 0 100%;
   text-align: center;
-  padding: 10px; /* Reduced padding for smaller screens */
+  padding: 30px;
   box-sizing: border-box;
 }
 
 .video-slide video {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  max-width: 80vw; /* 80% от ширины видимого экрана */
+  max-height: 80vh; /* 80% от высоты видимого экрана */
+  width: auto; /* Позволяет видео масштабироваться, не выходя за max-width */
+  height: auto; /* Позволяет видео масштабироваться, не выходя за max-height */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  margin: 0 auto; /* Центрирование видео в слайде */
+}
+
+.video-slide video:hover {
+  transform: scale(1.03);
 }
 
 .video-slider .slider-controls button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  background: none; /* Прозрачный фон */
   border: none;
-  padding: 8px 12px; /* Adjusted padding for smaller screens */
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 0.9em; /* Adjusted font size for smaller screens */
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  font-size: 1.2rem; /* Более крупный шрифт */
+  color: #fff; /* Белый цвет стрелок */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Тень для лучшей видимости */
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Плавность */
 }
 
 .video-slider .slider-controls button:hover {
   opacity: 1;
+  transform: translateY(-50%) scale(1.1); /* Эффект увеличения при наведении */
 }
 
 .video-slider .prev-video {
-  left: 5px; /* Adjusted position for smaller screens */
+  left: 20px;
+  /* Стилизация стрелки влево (можно использовать иконки) */
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.video-slider .prev-video::before {
+  content: '\00AB'; /* Unicode для двойной стрелки влево */
+  display: block;
+  text-indent: 0;
+  font-size: 2rem;
 }
 
 .video-slider .next-video {
-  right: 5px; /* Adjusted position for smaller screens */
+  right: 20px;
+  /* Стилизация стрелки вправо (можно использовать иконки) */
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.video-slider .next-video::before {
+  content: '\00BB'; /* Unicode для двойной стрелки вправо */
+  display: block;
+  text-indent: 0;
+  font-size: 2rem;
+}
+
+/* Дополнительные "фишки" */
+.video-slider::before,
+.video-slider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0)); /* Легкий градиент по краям */
+  pointer-events: none; /* Чтобы не мешали кликам */
+}
+
+.video-slider::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(249, 249, 249, 1), rgba(249, 249, 249, 0));
+}
+
+/* Адаптивность для совсем маленьких экранов */
+@media (max-width: 576px) {
+  .video-slider {
+    max-width: 95%;
+    margin: 20px auto;
+  }
+
+  .video-slide {
+    padding: 15px;
+  }
+
+  .video-slider .slider-controls button {
+    font-size: 1rem;
+  }
+
+  .video-slider .prev-video {
+    left: 10px;
+  }
+
+  .video-slider .next-video {
+    right: 10px;
+  }
 }
 
 .favorites-media-section {
