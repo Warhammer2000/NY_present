@@ -355,55 +355,87 @@ body {
   font-size: 0.9em; /* Adjusted font size for smaller screens */
 }
 
-.dreams-section {
-  background: url("images/photo-soap.jpg") center/cover no-repeat;
+.dreams-section--starry {
+  background: #0c092a; 
   color: #fff;
   text-align: center;
   position: relative;
+  overflow: hidden; 
 }
 
-.dreams-section::before {
+.dreams-section--starry::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0);
+  background: linear-gradient(rgba(0, 0, 0, 0.408), rgba(0, 0, 0, 0.616));
   z-index: 1;
 }
 
-.dreams-section .section-title {
+.dreams-section--starry .section-title {
   color: #fff;
-  background-color: rgba(0, 0, 0, 0);
   padding: 135px 10px;
-  border-radius: 5px;
+  position: relative;
+  z-index: 2;
 }
 
 .dreams-list {
-  max-width: 90%; /* Adjusted max width for smaller screens */
-  margin: 30px auto 0; /* Adjusted margin for smaller screens */
+  max-width: 90%;
+  margin: 30px auto 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px; /* Reduced gap for smaller screens */
+  gap: 20px;
   position: relative;
   z-index: 2;
 }
 
 .dream-item {
-  background: rgba(255, 255, 255, 0.8);
-  color: #333;
-  padding: 10px 15px; /* Adjusted padding for smaller screens */
-  border-radius: 30px; /* Adjusted border radius for smaller screens */
-  font-size: 0.9em; /* Adjusted font size for smaller screens */
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Adjusted shadow for smaller screens */
+  background: rgba(255, 255, 255, 0.1); /* Прозрачный фон */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 40px;
+  font-size: 1em;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   text-decoration: none;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .dream-item i {
-  margin-right: 8px; /* Adjusted margin for smaller screens */
-  color: #e91e63;
+  margin-right: 10px;
+  color: #4dabf7; /* Более яркий цвет иконок */
+  font-size: 1.2em;
+}
+
+.dream-item:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Анимация звездного неба */
+.star-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/photo-soap.jpg'); /* Или создайте свой шаблон звезд */
+  background-repeat: repeat;
+  background-size: cover;
+  opacity: 0.6;
+  z-index: 0;
+  animation: twinkle 10s linear infinite;
+}
+
+@keyframes twinkle {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 100px; } /* Смещение фона для эффекта движения */
 }
 
 .secret-section {
@@ -1315,7 +1347,6 @@ body {
 }
 
 @media (max-width: 576px) {
-<<<<<<< Updated upstream
     .pixel-art-item {
         width: 95%;
     }
@@ -1340,7 +1371,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    overflow: auto; /* Добавлено: позволяет прокручивать, если содержимое не помещается */
+    overflow: auto; 
 }
 
 .popup-content {
@@ -1348,17 +1379,17 @@ body {
     padding: 20px;
     border-radius: 5px;
     text-align: center;
-    max-width: 90%; /* Ограничиваем максимальную ширину */
-    max-height: 90%; /* Ограничиваем максимальную высоту */
-    overflow: auto; /* Добавлено: позволяет прокручивать содержимое попапа, если не помещается */
+    max-width: 90%; 
+    max-height: 90%; 
+    overflow: auto; 
 }
 
 .popup-preview,
 .popup video {
-    max-width: 100%; /* Гарантируем, что превью и видео не выходят за границы .popup-content */
+    max-width: 100%;
     max-height: 100%;
-    display: block; /* Убирает лишние отступы под inline элементами */
-    margin: 0 auto; /* Центрируем изображение/видео внутри .popup-content */
+    display: block; 
+    margin: 0 auto;
 }
 
 #plans {
@@ -1462,9 +1493,4 @@ body {
 
 .hyper-link:hover::before {
     opacity: 1;
-=======
-  .pixel-art-item {
-    width: 95%;
-  }
->>>>>>> Stashed changes
 }
