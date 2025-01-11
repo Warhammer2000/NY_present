@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize EmailJS FIRST
-  emailjs.init('H27wIf2owHo98p_li');
+  emailjs.init("H27wIf2owHo98p_li");
   // --- Галерея - Продвинутый слайдер ---
   const sliderWrapper = document.querySelector(".slider-wrapper");
   const slides = document.querySelectorAll(".slide");
@@ -18,8 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function updateSlider() {
-      sliderWrapper.style.transform = `translateX(-${currentIndex * (slideWidth + gap)
-        }px)`;
+      sliderWrapper.style.transform = `translateX(-${
+        currentIndex * (slideWidth + gap)
+      }px)`;
     }
 
     prevButton.addEventListener("click", () => {
@@ -83,19 +84,22 @@ document.addEventListener("DOMContentLoaded", () => {
       { month: 8, day: 19, description: "Памятный день" },
     ];
 
-    importantDates.forEach((date, index) => { // Добавили index для отслеживания
+    importantDates.forEach((date, index) => {
+      // Добавили index для отслеживания
       const listItem = document.createElement("li");
       listItem.innerHTML = `
                 <div class="date-icon"><i class="fas fa-heart"></i></div>
                 <div class="date-text"><span>${date.day}.${date.month
-          .toString()
-          .padStart(2, "0")}</span> - ${date.description}</div>
+        .toString()
+        .padStart(2, "0")}</span> - ${date.description}</div>
             `;
       importantDatesList.appendChild(listItem);
       console.log(`Создан элемент ${index + 1}: ${date.description}`); // Вывод в консоль
     });
 
-    console.log(`Общее количество элементов в списке: ${importantDatesList.children.length}`);
+    console.log(
+      `Общее количество элементов в списке: ${importantDatesList.children.length}`
+    );
   }
 
   // --- Часовой пояс - Обновление времени ---
@@ -192,55 +196,58 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${minutes}:${seconds}`;
   }
 
+  console.log("DOMContentLoaded event fired.");
 
-  console.log('DOMContentLoaded event fired.');
+  console.log("EmailJS initialized (from script.js)");
 
-  console.log('EmailJS initialized (from script.js)');
-
-  const sendButton = document.getElementById('sendButton');
+  const sendButton = document.getElementById("sendButton");
   if (sendButton) {
-    sendButton.addEventListener('click', function (e) {
+    sendButton.addEventListener("click", function (e) {
       e.preventDefault();
 
-      const myLetterContent = document.getElementById('myLetterContent').textContent;
-      const herAnswer = document.getElementById('herAnswer').value;
+      const myLetterContent =
+        document.getElementById("myLetterContent").textContent;
+      const herAnswer = document.getElementById("herAnswer").value;
 
       const templateParams = {
         my_letter: myLetterContent,
-        reply_text: herAnswer
+        reply_text: herAnswer,
       };
 
       // Отправка email через EmailJS
-      emailjs.send('service_uld33j6', 'template_b5r6osc', templateParams)
-        .then(function (response) {
-          console.log('SUCCESS!', response.status, response.text);
-          alert('Сообщение успешно отправлено!');
-        }, function (error) {
-          console.error('FAILED...', error);
-          alert('Ошибка отправки сообщения.');
-        });
+      emailjs.send("service_uld33j6", "template_b5r6osc", templateParams).then(
+        function (response) {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Сообщение успешно отправлено!");
+        },
+        function (error) {
+          console.error("FAILED...", error);
+          alert("Ошибка отправки сообщения.");
+        }
+      );
     });
   }
 
-  const interactiveItems = document.querySelectorAll('.pixel-art-item.has-surprise');
+  const interactiveItems = document.querySelectorAll(
+    ".pixel-art-item.has-surprise"
+  );
 
-  interactiveItems.forEach(item => {
-    const button = item.querySelector('.surprise-button');
-    const preview = item.querySelector('.surprise-preview');
-    const video = item.querySelector('video');
-    const previewTriggerLink = item.querySelector('.preview-trigger');
+  interactiveItems.forEach((item) => {
+    const button = item.querySelector(".surprise-button");
+    const preview = item.querySelector(".surprise-preview");
+    const video = item.querySelector("video");
+    const previewTriggerLink = item.querySelector(".preview-trigger");
 
-    button.addEventListener('click', function () {
-      button.style.display = 'none';
-      preview.style.display = 'block';
+    button.addEventListener("click", function () {
+      button.style.display = "none";
+      preview.style.display = "block";
     });
 
-    previewTriggerLink.addEventListener('click', function (event) {
+    previewTriggerLink.addEventListener("click", function (event) {
       event.preventDefault(); // Предотвращаем переход по ссылке
-      preview.style.display = 'none';
-      video.style.display = 'block';
+      preview.style.display = "none";
+      video.style.display = "block";
       video.play();
     });
   });
-
 });
