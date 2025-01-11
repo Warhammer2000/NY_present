@@ -370,7 +370,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.408), rgba(0, 0, 0, 0.616));
+  background: linear-gradient(rgba(0, 0, 0, 0.408), rgba(0, 0, 0, -0.384));
   z-index: 1;
 }
 
@@ -529,31 +529,146 @@ body {
   margin-bottom: 10px; /* Adjusted margin for smaller screens */
 }
 
+
+
+
+
+
 /* Стилизация "Мост любви" */
 .timezone-section {
-  background-color: #f0f0f0;
-  padding: 50px 0; /* Adjusted padding for smaller screens */
+  background: radial-gradient(circle at center, #fff0f5 0%, #ffe0e6 70%);
+  padding: 70px 0;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><circle cx="5" cy="5" r="1" fill="#f06292"/></svg>');
+  background-size: 20px 20px;
+  animation: background-float 10s linear infinite;
+}
+
+@keyframes background-float {
+  from { background-position: 0 0; }
+  to { background-position: 100% 100%; }
+}
+
+.timezone-section::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+  z-index: 0;
 }
 
 .timezone-clocks {
-  max-width: 100%; /* Full width on smaller screens */
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column; /* Stack clocks on smaller screens */
-  align-items: center; /* Center clocks horizontally */
-  padding: 0 20px; /* Add side padding for smaller screens */
+  justify-content: space-around;
+  align-items: stretch;
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
 }
 
 .clock-city {
   text-align: center;
-  margin-bottom: 20px; /* Add margin between stacked clocks */
+  margin-bottom: 40px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Убрали transform из обычной transition */
+  border: 1px solid rgba(240, 100, 146, 0.2);
+}
+
+.clock-city:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Оставляем тень при наведении */
 }
 
 .clock {
-  font-size: 2em; /* Adjusted font size for smaller screens */
+  font-size: 3em;
   color: #e91e63;
   font-weight: bold;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+  position: relative;
+  letter-spacing: -0.05em;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Плавное изменение цвета и тени */
 }
+
+.clock:hover {
+  color: #f06292; /* Меняем цвет при наведении */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Менее интенсивная тень при наведении */
+}
+
+.clock::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, #f06292, #e91e63);
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.clock-label {
+  display: block;
+  font-size: 1em;
+  color: #777;
+  margin-top: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Визуальные акценты для разделителей */
+.timezone-clocks > * + * {
+  position: relative;
+}
+
+.timezone-clocks > * + *::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 70px;
+  background-color: #ddd;
+}
+
+/* Уберем разделители на маленьких экранах */
+@media (max-width: 768px) {
+  .timezone-clocks {
+    padding: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .clock-city {
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+  .clock {
+    font-size: 2.5em;
+  }
+  .timezone-clocks > * + *::before {
+    content: none;
+  }
+}
+
+
+
+
 
 /* Стилизация "Планы" */
 .plans-section {
@@ -600,7 +715,6 @@ body {
     margin-bottom: 10px; /* Adjust spacing on smaller screens */
   }
 }
-
 /* Стилизация подвала */
 .site-footer {
   background-color: #333;
@@ -610,48 +724,134 @@ body {
   font-size: 0.9em; /* Adjusted font size for smaller screens */
 }
 
-/* Стилизация раздела "Важные даты" */
+
+
+
+/* Общие настройки */
+:root {
+  --primary-color: #ffdde1; /* Нежный пастельный розовый */
+  --secondary-color: #fff0f3; /* Еще более светлый оттенок */
+  --accent-color: #f48fb1; /* Более насыщенный, но все еще мягкий розовый */
+  --text-color: #333;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
 .calendar-section {
-  padding: 40px 0; /* Adjusted padding for smaller screens */
-  background-color: #f9f9f9;
+  padding: 60px 0;
+  background-color: var(--secondary-color);
+  /* Тонкий узор из сердечек или абстрактных фигур */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="%23ffb6c1" d="M10 18.13l-6.46-6.46a4.5 4.5 0 0 1 6.36-6.36l.1.1.1-.1a4.5 4.5 0 0 1 6.36 6.36L10 18.13z"/></svg>');
+  position: relative;
+  overflow: hidden;
+}
+
+.calendar-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), transparent); /* Легкая вуаль */
+  pointer-events: none; /* Чтобы не мешало взаимодействию */
 }
 
 .important-dates-list {
   list-style: none;
-  padding: 0;
-  max-width: 90%; /* Take up more width on smaller screens */
-  margin: 20px auto;
+  padding: 20px;
+  max-width: 80%; /* Еще немного уменьшим для концентрации */
+  margin: 40px auto;
+  position: relative;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px var(--shadow-color); /* Более выраженная тень */
+}
+
+.important-dates-list::before,
+.important-dates-list::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.5;
+  filter: blur(15px);
+  z-index: -1;
+}
+
+.important-dates-list::before {
+  top: -30px;
+  left: -30px;
+}
+
+.important-dates-list::after {
+  bottom: -30px;
+  right: -30px;
+  transform: scale(0.9);
 }
 
 .important-dates-list li {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 12px 15px; /* Adjusted padding for smaller screens */
-  margin-bottom: 10px;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+  padding: 18px 25px;
+  margin-bottom: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out;
-  font-size: 0.9em; /* Adjusted font size for smaller screens */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Более тонкая тень */
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-size: 1em;
+  position: relative;
+  border: 1px solid transparent; /* Для анимации границы */
+}
+
+.important-dates-list li:last-child {
+  margin-bottom: 0;
+}
+
+.important-dates-list li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, var(--primary-color), transparent);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: -1;
 }
 
 .important-dates-list li:hover {
-  transform: scale(1.01);
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--accent-color);
+}
+
+.important-dates-list li:hover::before {
+  opacity: 1;
 }
 
 .date-icon {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 25px; /* Adjusted size for smaller screens */
-  height: 25px; /* Adjusted size for smaller screens */
-  border-radius: 50%;
-  background-color: #ffe0e6;
-  color: #e91e63;
-  font-size: 0.8em; /* Adjusted font size for smaller screens */
-  margin-right: 10px; /* Adjusted margin for smaller screens */
+  width: 35px;
+  height: 35px;
+  border-radius: 10px; /* Более квадратный, современный вид */
+  background-color: white;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  font-size: 0.9em;
+  margin-right: 20px;
+  box-shadow: 0 2px 6px rgba(244, 143, 177, 0.4); /* Тень под иконкой */
+  transition: transform 0.2s ease-in-out;
+}
+
+.date-icon i {
+  font-size: 1.2em; /* Увеличим иконку сердца */
 }
 
 .date-text {
@@ -660,9 +860,70 @@ body {
 
 .date-text span {
   font-weight: bold;
-  margin-right: 5px; /* Adjusted margin for smaller screens */
+  margin-right: 10px;
+  color: var(--text-color);
 }
 
+/* Анимированное сердечко */
+.date-text::after {
+  content: '💖'; /* Более яркое сердечко */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+  opacity: 0.8;
+  animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1);
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* Более плавная анимация появления */
+.important-dates-list li {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInSlideUp 0.6s ease-out forwards var(--animation-delay);
+}
+
+@keyframes fadeInSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Задержки для анимации (можно продолжать) */
+.important-dates-list li:nth-child(1) {
+  --animation-delay: 0.15s;
+}
+.important-dates-list li:nth-child(2) {
+  --animation-delay: 0.3s;
+}
+.important-dates-list li:nth-child(3) {
+  --animation-delay: 0.45s;
+}
+.important-dates-list li:nth-child(4) {
+  --animation-delay: 0.6s;
+}
+.important-dates-list li:nth-child(5) {
+  --animation-delay: 0.75s;
+}
+
+
+
+
+
+/* и так далее для каждого элемента */
 .timeline-item-future .timeline-circle-future {
   animation: pulse 1.5s infinite;
   background: #ff4081;
@@ -842,110 +1103,248 @@ body {
   font-weight: bold;
 }
 
+
+
+
 /* Стили для категорий */
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #dbeafe;
+  --text-color-primary: #1e293b;
+  --text-color-secondary: #4b5563;
+  --card-bg: #fff;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --border-radius-base: 10px; /* Базовое скругление */
+}
+
 .media-category {
-  margin-bottom: 50px; /* Adjusted margin for smaller screens */
+  margin-bottom: 30px; /* Базовый отступ */
+  position: relative;
+  overflow: hidden;
 }
 
 .media-category h3 {
-  font-size: 1.6em; /* Adjusted font size for smaller screens */
-  color: #495057;
-  margin-bottom: 20px; /* Adjusted margin for smaller screens */
-  border-bottom: 2px solid #dee2e6; /* Thinner border */
-  padding-bottom: 10px; /* Adjusted padding for smaller screens */
+  font-size: 1.6em; /* Базовый размер шрифта */
+  color: var(--text-color-primary);
+  margin-bottom: 15px;
+  border-bottom: none;
+  padding-bottom: 5px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  position: relative;
+  padding-left: 0.8em;
+  overflow: hidden;
+}
+
+.media-category h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0.4em;
+  background-image: linear-gradient(to bottom, var(--primary-color), #a78bfa);
+  border-radius: 0 4px 4px 0;
+  transform: translateX(-100%);
+  animation: slideIn 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
 }
 
 /* Сетка для медиа-элементов */
 .media-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(150px, 1fr)
-  ); /* Smaller minmax for smaller screens */
-  gap: 25px; /* Adjusted gap for smaller screens */
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); /* Базовая сетка */
+  gap: 15px;
+  padding: 10px;
 }
 
 /* Стили для карточек медиа */
 .media-item {
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Slightly reduced shadow */
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-base);
+  box-shadow: 0 4px 10px var(--card-shadow); /* Базовая тень */
   overflow: hidden;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .media-item:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Slightly reduced shadow */
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .media-item img {
   width: 100%;
-  height: 200px; /* Reduced height for smaller screens */
+  height: 280px; /* Базовая высота изображения */
   object-fit: cover;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: var(--border-radius-base);
+  border-top-right-radius: var(--border-radius-base);
+  filter: brightness(1.02) saturate(1.03);
+  transition: filter 0.2s ease-in-out;
+}
+
+.media-item:hover img {
+  filter: brightness(1.04) saturate(1.05);
 }
 
 .media-item-content {
-  padding: 20px; /* Adjusted padding for smaller screens */
-  text-align: center;
+  padding: 15px; /* Базовые отступы */
+  text-align: left;
 }
 
 .media-item-content h4 {
   margin-top: 0;
-  margin-bottom: 10px; /* Adjusted margin for smaller screens */
-  font-size: 1.1em; /* Adjusted font size for smaller screens */
-  color: #212529;
+  margin-bottom: 8px;
+  font-size: 1.1em; /* Базовый размер шрифта */
+  color: var(--text-color-primary);
   font-weight: 600;
+  transition: color 0.2s ease-in-out;
+}
+
+.media-item:hover .media-item-content h4 {
+  color: var(--primary-color);
 }
 
 .media-item-content p {
-  color: #6c757d;
-  font-size: 0.9em; /* Adjusted font size for smaller screens */
-  margin-bottom: 15px; /* Adjusted margin for smaller screens */
+  color: var(--text-color-secondary);
+  font-size: 0.95em; /* Базовый размер шрифта */
+  margin-bottom: 15px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .media-item-actions {
   display: flex;
-  justify-content: center;
-  gap: 10px; /* Adjusted gap for smaller screens */
-  flex-direction: column; /* Stack buttons on very small screens */
-  align-items: center;
+  justify-content: space-around;
+  gap: 8px;
+  padding: 0 15px 15px;
+  flex-wrap: wrap;
 }
 
 .media-item-actions a,
 .media-item-actions button {
-  padding: 10px 20px; /* Adjusted padding for smaller screens */
+  padding: 8px 16px; /* Базовые отступы кнопок */
   border: none;
-  border-radius: 10px;
-  background-color: #007bff;
+  border-radius: 25px; /* Базовое скругление кнопок */
+  background-color: var(--primary-color);
   color: white;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  font-size: 0.9em; /* Adjusted font size for smaller screens */
-  width: 100%; /* Make buttons full width on very small screens */
-  box-sizing: border-box; /* Ensure padding doesn't add to width */
-  margin-bottom: 5px; /* Add a bit of space between stacked buttons */
-}
-
-.media-item-actions a:last-child,
-.media-item-actions button:last-child {
-  margin-bottom: 0; /* Remove bottom margin from the last button */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  font-size: 0.9em; /* Базовый размер шрифта кнопок */
+  font-weight: 500;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+  text-align: center;
+  min-width: 0;
 }
 
 .media-item-actions a:hover,
 .media-item-actions button:hover {
-  background-color: #0056b3;
+  background-color: #5457f7;
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Специфические стили для музыки */
-.media-item.music .media-item-content p {
-  margin-bottom: 20px; /* Adjusted margin for smaller screens */
+.media-item-actions a:focus,
+.media-item-actions button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.4);
 }
+
+.media-item.music .media-item-content p {
+  margin-bottom: 20px;
+}
+
+/* === Стили для экранов компьютеров и больших устройств === */
+@media (min-width: 769px) { /* Минимальная ширина для десктопов и планшетов в ландшафтном режиме */
+  .media-category {
+    margin-bottom: 50px; /* Увеличенный отступ */
+  }
+  .media-category h3 {
+    font-size: 2.2em; /* Увеличенный размер шрифта */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    letter-spacing: 0.15em;
+    padding-left: 1.2em;
+  }
+  .media-category h3::before {
+    width: 0.5em;
+    border-radius: 0 5px 5px 0;
+    animation-duration: 0.7s; /* Более плавная анимация */
+  }
+  .media-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Более широкие карточки */
+    gap: 30px; /* Увеличенный отступ между карточками */
+    padding: 20px;
+  }
+  .media-item {
+    border-radius: 15px; /* Большее скругление */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Более выраженная тень */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Более плавные переходы */
+  }
+  .media-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  }
+  .media-item img {
+    height: 400px; /* Большая высота изображения */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  .media-item-content {
+    padding: 25px; /* Большие отступы */
+  }
+  .media-item-content h4 {
+    font-size: 1.4em; /* Больший размер шрифта */
+    margin-bottom: 12px;
+  }
+  .media-item-content p {
+    font-size: 1em; /* Больший размер шрифта */
+    margin-bottom: 20px;
+    white-space: normal; /* Разрешаем перенос строк */
+  }
+  .media-item-actions {
+    justify-content: flex-start; /* Кнопки в ряд слева */
+    gap: 15px;
+    padding: 0 25px 25px;
+    flex-wrap: nowrap; /* Кнопки в одну строку */
+  }
+  .media-item-actions a,
+  .media-item-actions button {
+    padding: 12px 24px; /* Большие отступы кнопок */
+    border-radius: 30px; /* Большее скругление кнопок */
+    font-size: 1em; /* Больший размер шрифта кнопок */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Более выраженная тень у кнопок */
+  }
+  .media-item-actions a:hover,
+  .media-item-actions button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 7px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* === Стили для планшетов в портретном режиме === */
+@media (min-width: 601px) and (max-width: 768px) {
+  .media-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Промежуточный вариант сетки */
+  }
+  .media-item img {
+    height: 280px; /* Промежуточная высота изображения */
+  }
+  .media-item-content p {
+    white-space: normal; /* Разрешаем перенос строк */
+  }
+}
+
 
 .custom-audio-player {
   background-color: #181818;
@@ -1355,7 +1754,7 @@ body {
     gap: 15px;
   }
   .media-item img {
-    height: 150px;
+    height: 220px;
   }
   .media-item-content h4 {
     font-size: 1em;
