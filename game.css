@@ -1,0 +1,161 @@
+/* Comic Section Styles - Игривый и Рисованный Стиль */
+.comic-section {
+    background-color: #f0f4ff; /* Светлый, "бумажный" фон */
+    padding: 40px 0;
+}
+
+.comic-creator {
+    display: flex;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08); /* Легкая, "мультяшная" тень */
+    border: 2px solid #a8d0e6; /* Голубоватая граница, будто нарисованная */
+}
+
+.comic-creator .controls {
+    width: 260px;
+    padding: 20px;
+    border-right: 2px dotted #87bdd8; /* Пунктирная граница */
+}
+
+.comic-creator .controls h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    color: #528ecc; /* Более приглушенный синий */
+    text-shadow: 1px 1px 0 #fff;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Игривый шрифт */
+    font-weight: bold;
+}
+
+.comic-creator .controls .background-options,
+.comic-creator .controls .character-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.comic-creator .controls img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.comic-creator .controls img:hover {
+    transform: scale(1.15);
+    box-shadow: 3px 3px 8px #b0e0e6; /* Светло-голубое свечение */
+    border-color: #b0e0e6;
+}
+
+.comic-creator .controls button {
+    display: block;
+    width: calc(100% - 10px);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: 2px solid #6cbfe7; /* Голубая граница */
+    border-radius: 25px; /* Сильно скругленные углы, как кнопка */
+    background-color: #fff;
+    color: #4682b4; /* Синий цвет текста */
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    font-weight: bold;
+    text-shadow: 0.5px 0.5px 0 #fff;
+}
+
+.comic-creator .controls button:hover {
+    background-color: #b0e0e6; /* Светло-голубой при наведении */
+    color: #2e6481; /* Более темный синий при наведении */
+    transform: scale(1.05);
+    box-shadow: 2px 2px 5px #87bdd8;
+}
+
+.comic-creator .controls button:disabled {
+    background-color: #f0f0f0;
+    color: #ccc;
+    border-color: #ddd;
+    cursor: default;
+    transform: scale(1);
+    box-shadow: none;
+}
+
+.comic-creator .controls button:disabled:hover {
+    background-color: #f0f0f0;
+    color: #ccc;
+    transform: scale(1);
+}
+
+.comic-creator .controls .page-controls {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 2px dotted #87bdd8;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.comic-creator .controls .page-controls button {
+    width: auto;
+    padding: 8px 18px;
+    margin: 0;
+    font-size: 0.9em;
+    border-radius: 20px;
+    border-color: #6cbfe7;
+}
+
+.comic-creator .controls .page-controls #page-number {
+    font-weight: bold;
+    color: #528ecc;
+    text-shadow: 0.5px 0.5px 0 #fff;
+    margin: 0 10px;
+}
+
+.comic-creator .canvas-container {
+    flex-grow: 1;
+    position: relative;
+    border: 3px solid #87bdd8; /* Более толстая граница */
+    border-radius: 8px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.05);
+    background-color: #fafffd; /* Очень светлый оттенок зеленого/голубого, как бумага */
+}
+
+.comic-creator #comicCanvas {
+    display: block;
+    border-radius: 6px;
+}
+
+/* Styles for Speech Bubbles (added dynamically) - Рисованные */
+.speech-bubble {
+    position: absolute;
+    padding: 15px;
+    background-color: #fff;
+    border: 3px solid #6cbfe7; /* Голубая граница */
+    border-radius: 15px;
+    cursor: grab;
+    resize: both;
+    overflow: hidden;
+    z-index: 10;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.06);
+}
+
+.speech-bubble textarea {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    margin: 5px;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: transparent;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #333;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* И шрифт внутри */
+}
