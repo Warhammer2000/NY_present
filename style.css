@@ -1,7 +1,7 @@
 body {
   font-family: "Playfair Display", serif;
   margin: 0;
-  background-color: #f4f4f8;
+  background-color: #f0f4ff;
   color: #333;
   line-height: 1.7;
   overflow-x: hidden;
@@ -14,7 +14,7 @@ body {
 
 /* Стилизация заголовка */
 .site-header {
-  background: #fff;
+  background: #f0f4ff;
   padding: 20px 0;
   /* Adjusted padding for smaller screens */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -117,7 +117,7 @@ body {
 /* Стилизация раздела "История" */
 .history-section {
   background: url("images/love-bg.jpg") center top/cover no-repeat;
-  color: #fff;
+  color: #f0f4ff;
   text-align: center;
   position: relative;
   min-height: auto;
@@ -257,7 +257,7 @@ body {
 
 /* Стилизация раздела "Галерея" */
 .gallery-section {
-  background-color: #fff;
+  background-color: #f0f4ff;
   padding: 5px 0;
   /* Adjusted padding for smaller screens */
 }
@@ -351,7 +351,7 @@ body {
 }
 
 .letters-section {
-  background-color: #f9f9f9;
+  background-color: #e2eaff;
 }
 
 .letters-container {
@@ -623,7 +623,7 @@ body {
 
 /* Стилизация "Мост любви" */
 .timezone-section {
-  background: radial-gradient(circle at center, #fff0f5 0%, #ffe0e6 70%);
+  background: radial-gradient(circle at center, #f0f4ff 0%, #f0f4ff 70%);
   padding: 70px 0;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
@@ -772,7 +772,7 @@ body {
 
 /* Стилизация "Планы" */
 .plans-section {
-  background-color: #fff;
+  background-color: #f0f4ff;
   padding: 50px 0;
 }
 
@@ -1242,7 +1242,7 @@ body {
 }
 
 .favorites-media-section {
-  background-color: #f8f9fa;
+  background-color: #f0f4ff;
   padding: 40px;
   /* Adjusted padding for smaller screens */
 }
@@ -2082,7 +2082,7 @@ body {
 }
 
 .pixel-art-section {
-  background-color: #ffe5ee;
+  background-color: #f0f4ff;
   /* Light pink background */
   padding: 60px 0;
   text-align: center;
@@ -2191,7 +2191,7 @@ body {
 }
 
 #plans {
-  background: linear-gradient(to bottom, #fdfbfb, #ebedee);
+  background: linear-gradient(to bottom, #f0f4ff, #ebedee);
   border-radius: 10px;
   padding: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
