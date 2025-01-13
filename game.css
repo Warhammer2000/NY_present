@@ -1,7 +1,7 @@
-/* Comic Section Styles - Игривый и Рисованный Стиль */
 .comic-section {
-    background-color: #f0f4ff; /* Светлый, "бумажный" фон */
+    background-color: #f0f4ff;
     padding: 40px 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .comic-creator {
@@ -11,24 +11,26 @@
     margin: 40px auto;
     padding: 30px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08); /* Легкая, "мультяшная" тень */
-    border: 2px solid #a8d0e6; /* Голубоватая граница, будто нарисованная */
+    border-radius: 12px;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.06);
+    border: 3px solid #a8d0e6;
+    align-items: flex-start; /* Выравнивание по верхнему краю */
 }
 
 .comic-creator .controls {
-    width: 260px;
+    width: 250px;
     padding: 20px;
-    border-right: 2px dotted #87bdd8; /* Пунктирная граница */
+    border-right: 3px dashed #87bdd8;
+    display: flex;
+    flex-direction: column; /* Размещение элементов управления друг под другом */
+    justify-content: space-between; /* Распределение места для кнопок страниц внизу */
 }
 
 .comic-creator .controls h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.3em;
-    color: #528ecc; /* Более приглушенный синий */
-    text-shadow: 1px 1px 0 #fff;
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* Игривый шрифт */
+    margin: 0 0 15px;
+    font-size: 1.4em;
+    color: #528ecc;
+    text-shadow: 2px 2px 0 #fff;
     font-weight: bold;
 }
 
@@ -36,46 +38,46 @@
 .comic-creator .controls .character-options {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .comic-creator .controls img {
-    width: 55px;
-    height: 55px;
+    width: 70px; /* Увеличенный размер иконок */
+    height: 70px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
 }
 
 .comic-creator .controls img:hover {
-    transform: scale(1.15);
-    box-shadow: 3px 3px 8px #b0e0e6; /* Светло-голубое свечение */
+    transform: scale(1.1);
+    box-shadow: 4px 4px 10px #b0e0e6;
     border-color: #b0e0e6;
 }
 
 .comic-creator .controls button {
     display: block;
-    width: calc(100% - 10px);
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    border: 2px solid #6cbfe7; /* Голубая граница */
-    border-radius: 25px; /* Сильно скругленные углы, как кнопка */
+    width: calc(100% - 12px);
+    padding: 12px 18px;
+    margin-bottom: 12px;
+    border: 3px solid #6cbfe7;
+    border-radius: 30px;
     background-color: #fff;
-    color: #4682b4; /* Синий цвет текста */
+    color: #4682b4;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     font-weight: bold;
-    text-shadow: 0.5px 0.5px 0 #fff;
+    text-shadow: 1px 1px 0 #fff;
 }
 
 .comic-creator .controls button:hover {
-    background-color: #b0e0e6; /* Светло-голубой при наведении */
-    color: #2e6481; /* Более темный синий при наведении */
-    transform: scale(1.05);
-    box-shadow: 2px 2px 5px #87bdd8;
+    background-color: #b0e0e6;
+    color: #2e6481;
+    transform: scale(1.03);
+    box-shadow: 3px 3px 7px #87bdd8;
 }
 
 .comic-creator .controls button:disabled {
@@ -90,72 +92,71 @@
 .comic-creator .controls button:disabled:hover {
     background-color: #f0f0f0;
     color: #ccc;
-    transform: scale(1);
 }
 
 .comic-creator .controls .page-controls {
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 2px dotted #87bdd8;
-    display: flex;
+    padding-top: 15px;
+    border-top: 3px dashed #87bdd8;
+    display: flex-wrap;
     justify-content: space-around;
     align-items: center;
 }
 
 .comic-creator .controls .page-controls button {
     width: auto;
-    padding: 8px 18px;
+    padding: 10px 20px;
     margin: 0;
-    font-size: 0.9em;
-    border-radius: 20px;
+    font-size: 1em;
+    border-radius: 30px;
     border-color: #6cbfe7;
 }
 
 .comic-creator .controls .page-controls #page-number {
     font-weight: bold;
     color: #528ecc;
-    text-shadow: 0.5px 0.5px 0 #fff;
-    margin: 0 10px;
+    text-shadow: 1px 1px 0 #fff;
+    margin: 0 15px;
 }
 
 .comic-creator .canvas-container {
-    flex-grow: 1;
+    flex-grow: 1; /* Канва занимает оставшееся пространство */
     position: relative;
-    border: 3px solid #87bdd8; /* Более толстая граница */
-    border-radius: 8px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.05);
-    background-color: #fafffd; /* Очень светлый оттенок зеленого/голубого, как бумага */
+    border: 4px solid #87bdd8;
+    border-radius: 10px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.04);
+    background-color: #fafffd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .comic-creator #comicCanvas {
     display: block;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
-/* Styles for Speech Bubbles (added dynamically) - Рисованные */
 .speech-bubble {
     position: absolute;
-    padding: 15px;
+    padding: 18px;
     background-color: #fff;
-    border: 3px solid #6cbfe7; /* Голубая граница */
-    border-radius: 15px;
+    border: 4px solid #6cbfe7;
+    border-radius: 20px;
     cursor: grab;
     resize: both;
     overflow: hidden;
     z-index: 10;
-    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.06);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .speech-bubble textarea {
-    width: calc(100% - 10px);
-    height: calc(100% - 10px);
-    margin: 5px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    margin: 6px;
     border: none;
     outline: none;
     resize: none;
     background-color: transparent;
-    font-size: 16px;
-    line-height: 1.3;
+    font-size: 17px;
+    line-height: 1.4;
     color: #333;
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* И шрифт внутри */
 }

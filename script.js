@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize EmailJS FIRST
   emailjs.init("H27wIf2owHo98p_li");
-  // --- Галерея - Продвинутый слайдер ---
   const sliderWrapper = document.querySelector(".slider-wrapper");
   const slides = document.querySelectorAll(".slide");
   const prevButton = document.querySelector(".prev-slide");
@@ -37,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", updateSliderDimensions);
   }
 
-  // --- Секретный раздел - Показ контента ---
   const revealSecretButton = document.getElementById("reveal-secret");
   const secretContent = document.getElementById("secret-content");
   const passwordInput = document.getElementById("secret-code");
@@ -63,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   revealSecretButton?.addEventListener("click", function () {
     const password = passwordInput.value;
-    // **ВАЖНО: В РЕАЛЬНОМ ПРИЛОЖЕНИИ ЗДЕСЬ ДОЛЖНА БЫТЬ ПРОВЕРКА ПАРОЛЯ НА СЕРВЕРЕ**
     if (password === "123") {
       document.querySelector(".password-input").style.display = "none";
       secretContent.classList.remove("hidden");
@@ -73,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- Календарь воспоминаний ---
   const importantDatesList = document.querySelector(".important-dates-list");
   if (importantDatesList) {
     const importantDates = [
@@ -85,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     importantDates.forEach((date, index) => {
-      // Добавили index для отслеживания
       const listItem = document.createElement("li");
       listItem.innerHTML = `
                 <div class="date-icon"><i class="fas fa-heart"></i></div>
@@ -94,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .padStart(2, "0")}</span> - ${date.description}</div>
             `;
       importantDatesList.appendChild(listItem);
-      console.log(`Создан элемент ${index + 1}: ${date.description}`); // Вывод в консоль
+      console.log(`Создан элемент ${index + 1}: ${date.description}`);
     });
 
     console.log(
@@ -102,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // --- Часовой пояс - Обновление времени ---
   const updateClock = (elementId, timezone) => {
     const element = document.getElementById(elementId);
     if (element) {
@@ -121,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(() => updateClock("tashkent-clock", "Asia/Tashkent"), 1000);
   setInterval(() => updateClock("korea-clock", "Asia/Seoul"), 1000);
 
-  // --- Плавная прокрутка к якорям ---
   document.querySelectorAll(".main-nav a").forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
@@ -140,20 +132,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const audioPlayer = document.querySelector(".custom-audio-player");
   const audio = audioPlayer.querySelector("audio");
   const playPauseButton = audioPlayer.querySelector(".play-pause-button");
-  const playIcon = "fa-play"; // Только специфическая часть иконки
-  const pauseIcon = "fa-pause"; // Только специфическая часть иконки
+  const playIcon = "fa-play";
+  const pauseIcon = "fa-pause";
   const progressBar = audioPlayer.querySelector(".progress-bar");
   const progress = audioPlayer.querySelector(".progress");
   const currentTimeDisplay = audioPlayer.querySelector(".current-time");
   const durationDisplay = audioPlayer.querySelector(".duration");
   const volumeSlider = audioPlayer.querySelector(".volume-slider");
 
-  // Загрузка метаданных аудио
   audio.addEventListener("loadedmetadata", () => {
     durationDisplay.textContent = formatTime(audio.duration);
   });
 
-  // Play/Pause
   playPauseButton.addEventListener("click", () => {
     const icon = playPauseButton.querySelector("i");
     if (audio.paused) {
@@ -167,14 +157,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Обновление прогресса
   audio.addEventListener("timeupdate", () => {
     const progressPercent = (audio.currentTime / audio.duration) * 100;
     progress.style.width = `${progressPercent}%`;
     currentTimeDisplay.textContent = formatTime(audio.currentTime);
   });
 
-  // Перемотка при клике на progress bar
   progressBar.addEventListener("click", (e) => {
     const progressBarWidth = progressBar.offsetWidth;
     const clickPosition = e.offsetX;
@@ -182,12 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
     audio.currentTime = seekTime;
   });
 
-  // Регулировка громкости
   volumeSlider.addEventListener("input", () => {
     audio.volume = volumeSlider.value;
   });
 
-  // Функция для форматирования времени
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60)
@@ -214,7 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
         reply_text: herAnswer,
       };
 
-      // Отправка email через EmailJS
       emailjs.send("service_uld33j6", "template_b5r6osc", templateParams).then(
         function (response) {
           console.log("SUCCESS!", response.status, response.text);
@@ -244,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     previewTriggerLink.addEventListener("click", function (event) {
-      event.preventDefault(); // Предотвращаем переход по ссылке
+      event.preventDefault();
       preview.style.display = "none";
       video.style.display = "block";
       video.play();
