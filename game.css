@@ -1,83 +1,98 @@
+@media (max-width: 768px) {
+    .comic-section {
+        display: none;
+    }
+}
+
 .comic-section {
     background-color: #f0f4ff;
-    padding: 40px 0;
+    padding: 20px 0; /* Уменьшим отступы для мобильных */
     font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .comic-creator {
     display: flex;
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
     gap: 20px;
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 30px;
+    max-width: 1200px; /* Немного увеличим для десктопов */
+    margin: 20px auto; /* Уменьшим отступы сверху и снизу для мобильных */
+    padding: 20px; /* Уменьшим внутренние отступы для мобильных */
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06); /* Уменьшим тень для мобильных */
     border: 3px solid #a8d0e6;
-    align-items: flex-start; /* Выравнивание по верхнему краю */
+    align-items: flex-start;
 }
 
 .comic-creator .controls {
-    width: 250px;
-    padding: 20px;
-    border-right: 3px dashed #87bdd8;
+    /* width: 250px;  Удаляем фиксированную ширину */
+    min-width: 200px; /* Задаем минимальную ширину */
+    flex: 1 1 250px; /* Позволяем расти и сжиматься, но не меньше 250px */
+    padding: 15px; /* Уменьшим внутренние отступы для мобильных */
+    border-right: none; /* Уберем разделитель для мобильных */
+    border-bottom: 3px dashed #87bdd8; /* Добавим разделитель снизу для мобильных */
     display: flex;
-    flex-direction: column; /* Размещение элементов управления друг под другом */
-    justify-content: space-between; /* Распределение места для кнопок страниц внизу */
+    flex-direction: row; /* Разместим элементы в ряд для мобильных */
+    flex-wrap: wrap; /* Разрешим перенос элементов управления */
+    justify-content: space-between; /* Распределим элементы по ширине */
+    align-items: flex-start;
 }
 
 .comic-creator .controls h3 {
-    margin: 0 0 15px;
-    font-size: 1.4em;
+    margin: 0 0 10px; /* Уменьшим нижний отступ */
+    font-size: 1.2em; /* Уменьшим размер шрифта для мобильных */
     color: #528ecc;
-    text-shadow: 2px 2px 0 #fff;
+    text-shadow: 1px 1px 0 #fff; /* Уменьшим тень */
     font-weight: bold;
+    flex-basis: 100%; /* Занимает всю ширину строки */
 }
 
 .comic-creator .controls .background-options,
 .comic-creator .controls .character-options {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 5px; /* Уменьшим отступы между иконками */
+    margin-bottom: 10px; /* Уменьшим нижний отступ */
+    flex-basis: 100%; /* Занимает всю ширину строки */
 }
 
 .comic-creator .controls img {
-    width: 70px; /* Увеличенный размер иконок */
-    height: 70px;
+    width: 50px; /* Уменьшим размер иконок для мобильных */
+    height: 50px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 8px; /* Уменьшим скругление */
     cursor: pointer;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    border: 3px solid transparent;
+    border: 2px solid transparent; /* Уменьшим толщину рамки */
 }
 
 .comic-creator .controls img:hover {
-    transform: scale(1.1);
-    box-shadow: 4px 4px 10px #b0e0e6;
+    transform: scale(1.05); /* Меньше увеличение при наведении */
+    box-shadow: 2px 2px 5px #b0e0e6; /* Уменьшим тень при наведении */
     border-color: #b0e0e6;
 }
 
 .comic-creator .controls button {
     display: block;
-    width: calc(100% - 12px);
-    padding: 12px 18px;
-    margin-bottom: 12px;
-    border: 3px solid #6cbfe7;
-    border-radius: 30px;
+    width: calc(100% - 8px); /* Уменьшим вычитание для учета уменьшенных паддингов */
+    padding: 10px 15px; /* Уменьшим внутренние отступы */
+    margin-bottom: 8px; /* Уменьшим нижний отступ */
+    border: 2px solid #6cbfe7; /* Уменьшим толщину рамки */
+    border-radius: 20px; /* Уменьшим скругление */
     background-color: #fff;
     color: #4682b4;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     font-weight: bold;
     text-shadow: 1px 1px 0 #fff;
+    font-size: 0.9em; /* Уменьшим размер шрифта */
 }
 
 .comic-creator .controls button:hover {
     background-color: #b0e0e6;
     color: #2e6481;
-    transform: scale(1.03);
-    box-shadow: 3px 3px 7px #87bdd8;
+    transform: scale(1.02); /* Меньше увеличение при наведении */
+    box-shadow: 2px 2px 4px #87bdd8; /* Уменьшим тень при наведении */
 }
 
 .comic-creator .controls button:disabled {
@@ -95,19 +110,21 @@
 }
 
 .comic-creator .controls .page-controls {
-    padding-top: 15px;
+    padding-top: 10px; /* Уменьшим верхний отступ */
     border-top: 3px dashed #87bdd8;
-    display: flex-wrap;
+    display: flex;
+    flex-wrap: wrap; /* Разрешим перенос кнопок управления страницами */
     justify-content: space-around;
     align-items: center;
+    flex-basis: 100%; /* Занимает всю ширину строки */
 }
 
 .comic-creator .controls .page-controls button {
     width: auto;
-    padding: 10px 20px;
-    margin: 0;
-    font-size: 1em;
-    border-radius: 30px;
+    padding: 8px 15px; /* Уменьшим внутренние отступы */
+    margin: 5px; /* Добавим отступы между кнопками */
+    font-size: 0.9em;
+    border-radius: 20px; /* Уменьшим скругление */
     border-color: #6cbfe7;
 }
 
@@ -115,48 +132,108 @@
     font-weight: bold;
     color: #528ecc;
     text-shadow: 1px 1px 0 #fff;
-    margin: 0 15px;
+    margin: 0 10px; /* Уменьшим боковые отступы */
 }
 
 .comic-creator .canvas-container {
-    flex-grow: 1; /* Канва занимает оставшееся пространство */
+    flex-grow: 1;
     position: relative;
-    border: 4px solid #87bdd8;
-    border-radius: 10px;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.04);
+    border: 3px solid #87bdd8; /* Уменьшим толщину рамки */
+    border-radius: 8px; /* Уменьшим скругление */
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.04); /* Уменьшим тень */
     background-color: #fafffd;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 200px; /* Минимальная высота канвы */
 }
 
 .comic-creator #comicCanvas {
     display: block;
-    border-radius: 8px;
+    border-radius: 6px; /* Уменьшим скругление */
+    max-width: 100%; /* Канва не будет шире контейнера */
+    max-height: 100%; /* Канва не будет выше контейнера */
 }
 
 .speech-bubble {
     position: absolute;
-    padding: 18px;
+    padding: 12px; /* Уменьшим внутренние отступы */
     background-color: #fff;
-    border: 4px solid #6cbfe7;
-    border-radius: 20px;
+    border: 3px solid #6cbfe7; /* Уменьшим толщину рамки */
+    border-radius: 15px; /* Уменьшим скругление */
     cursor: grab;
     resize: both;
     overflow: hidden;
     z-index: 10;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05); /* Уменьшим тень */
 }
 
 .speech-bubble textarea {
-    width: calc(100% - 12px);
-    height: calc(100% - 12px);
-    margin: 6px;
+    width: calc(100% - 8px); /* Уменьшим вычитание для учета уменьшенных паддингов */
+    height: calc(100% - 8px);
+    margin: 4px; /* Уменьшим отступы */
     border: none;
     outline: none;
     resize: none;
     background-color: transparent;
-    font-size: 17px;
-    line-height: 1.4;
+    font-size: 14px; /* Уменьшим размер шрифта */
+    line-height: 1.3; /* Уменьшим межстрочный интервал */
     color: #333;
+}
+
+/* Медиазапрос для экранов меньше 768px (мобильные) */
+@media (max-width: 768px) {
+    .comic-creator {
+        flex-direction: column; /* Размещаем элементы вертикально */
+    }
+
+    .comic-creator .controls {
+        flex-direction: row; /* Возвращаем размещение элементов управления в ряд */
+        border-right: none; /* Убираем правую границу */
+        border-bottom: 3px dashed #87bdd8; /* Добавляем нижнюю границу */
+        padding-bottom: 15px;
+        flex-wrap: wrap; /* Разрешаем перенос элементов управления */
+    }
+
+    .comic-creator .controls > * {
+        flex-basis: 100%; /* Каждый элемент управления на новой строке */
+        margin-bottom: 10px;
+    }
+
+    .comic-creator .controls h3,
+    .comic-creator .controls .background-options,
+    .comic-creator .controls .character-options,
+    .comic-creator .controls button,
+    .comic-creator .controls .page-controls {
+        flex-basis: 100%; /* Занимают всю ширину */
+    }
+
+    .comic-creator .controls .page-controls {
+        border-top: 3px dashed #87bdd8;
+        padding-top: 10px;
+        justify-content: space-around;
+    }
+
+    .comic-creator .canvas-container {
+        min-height: 300px; /* Увеличим минимальную высоту канвы для мобильных */
+    }
+}
+
+/* Медиазапрос для экранов от 769px до 1200px (планшеты и небольшие десктопы) */
+@media (min-width: 769px) and (max-width: 1200px) {
+    .comic-creator {
+        padding: 30px;
+    }
+
+    .comic-creator .controls {
+        flex-direction: column;
+        border-right: 3px dashed #87bdd8;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .comic-creator .controls > * {
+        flex-basis: auto;
+        margin-bottom: 12px;
+    }
 }
