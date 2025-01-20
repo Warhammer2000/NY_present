@@ -6,31 +6,30 @@
 
 .comic-section {
     background-color: #f0f4ff;
-    padding: 20px 0; /* Уменьшим отступы для мобильных */
+    padding: 20px 0; 
     font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .comic-creator {
     display: flex;
-    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+    flex-wrap: wrap; 
     gap: 20px;
-    max-width: 1200px; /* Немного увеличим для десктопов */
-    margin: 20px auto; /* Уменьшим отступы сверху и снизу для мобильных */
-    padding: 20px; /* Уменьшим внутренние отступы для мобильных */
+    max-width: 1200px; 
+    margin: 20px auto; 
+    padding: 20px; 
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06); /* Уменьшим тень для мобильных */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06); 
     border: 3px solid #a8d0e6;
     align-items: flex-start;
 }
 
 .comic-creator .controls {
-    /* width: 250px;  Удаляем фиксированную ширину */
-    min-width: 200px; /* Задаем минимальную ширину */
-    flex: 1 1 250px; /* Позволяем расти и сжиматься, но не меньше 250px */
-    padding: 15px; /* Уменьшим внутренние отступы для мобильных */
-    border-right: none; /* Уберем разделитель для мобильных */
-    border-bottom: 3px dashed #87bdd8; /* Добавим разделитель снизу для мобильных */
+    min-width: 200px; 
+    flex: 1 1 250px; 
+    padding: 15px; 
+    border-right: none;
+    border-bottom: 3px dashed #87bdd8;
     display: flex;
     flex-direction: row; /* Разместим элементы в ряд для мобильных */
     flex-wrap: wrap; /* Разрешим перенос элементов управления */
